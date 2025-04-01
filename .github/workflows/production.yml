@@ -1,0 +1,26 @@
+name: Deploy Astro to FTP
+
+on:
+  push:
+    branches: production # Or your primary branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build Astro site
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy to FTP
+        uses: SamKirkland/FTP-Deploy-Action@main
+        with:
+          ftp_host: ${{ secrets.FTP_HOST }}
+          ftp_user: ${{ secrets.FTP_USER }}
+          ftp_pass: ${{ secrets.FTP_PASS }}
+          local_dir: ./dist # Or your output directory
+          remote_dir: /path/on/your/ftp/server # Or your target directory on FTP
