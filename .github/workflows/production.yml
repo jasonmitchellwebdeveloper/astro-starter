@@ -23,4 +23,3 @@ jobs:
           ftp_user: ${{ secrets.FTP_USER }}
           ftp_pass: ${{ secrets.FTP_PASS }}
           local_dir: ./dist # Or your output directory
-          remote_dir: /path/on/your/ftp/server # Or your target directory on FTP
