@@ -7,6 +7,6 @@ import alpine from '@astrojs/alpinejs';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://tiny-jackal.cloudvent.net/',
+  site: 'https://astro-cc.thewebdeveloper.com.au/',
   integrations: [react(), tailwind(), bookshop(), alpine(), mdx()],
 });
