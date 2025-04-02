@@ -7,8 +7,6 @@ import alpine from '@astrojs/alpinejs';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://astro-cc.thewebdeveloper.com.au/',
+  site: 'https://astro-cc.thewebdeveloper.com.au',
   integrations: [react(), tailwind(), bookshop(), alpine(), mdx()],
-  base: 'astro-cc.thewebdeveloper.com.au',
-  trailingSlash: "always"
 });
