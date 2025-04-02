@@ -1,11 +1,12 @@
-name: Deploy Astro to FTP
+name: Publish Production Website
 
 on:
   push:
     branches: production # Or your primary branch
 
 jobs:
-  deploy:
+  web-deploy:
+    name: Get Latest Code
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -17,9 +18,10 @@ jobs:
           npm run build
 
       - name: Deploy to FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        uses: SamKirkland/web-deploy@v1
         with:
-          ftp_host: ${{ secrets.FTP_HOST }}
-          ftp_user: ${{ secrets.FTP_USER }}
-          ftp_pass: ${{ secrets.FTP_PASS }}
-          local_dir: ./dist # Or your output directory
+          target-server: astro-cc.thewebdeveloper.com.au
+          remote-user: ${{ secrets.FTP_USER }}
+          private-ssh-key: ${{ secrets.SSH_KEY }}
+          source-path: ./dist # Or your output directory
+          destination-path: /home/${{ secrets.FTP_USERS }}/astro-cc.thewebdeveloper.com.au/
