@@ -2,7 +2,7 @@ name: Publish Production Website
 
 on:
   push:
-    branches: production # Or your primary branch
+    branches: [ main ] # Or your primary branch
 
 jobs:
   web-deploy:
@@ -21,7 +21,7 @@ jobs:
         uses: SamKirkland/web-deploy@v1
         with:
           target-server: astro-cc.thewebdeveloper.com.au
-          remote-user: ${{ secrets.FTP_USER }}
+          remote-user: dh_wxegfn
           private-ssh-key: ${{ secrets.SSH_KEY }}
           source-path: ./dist # Or your output directory
-          destination-path: /home/${{ secrets.FTP_USERS }}/astro-cc.thewebdeveloper.com.au/
+          destination-path: /home/dh_wxegfn/astro-cc.thewebdeveloper.com.au/
