@@ -23,5 +23,4 @@ jobs:
           target-server: astro-cc.thewebdeveloper.com.au
           remote-user: dh_wxegfn
           private-ssh-key: ${{ secrets.SSH_KEY }}
-          source-path: ./dist # Or your output directory
           destination-path: /home/dh_wxegfn/astro-cc.thewebdeveloper.com.au/
