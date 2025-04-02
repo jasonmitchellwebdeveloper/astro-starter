@@ -2,7 +2,7 @@ name: Publish Production Website
 
 on:
   push:
-    branches: [ main ] # Or your primary branch
+    branches: [ mainbranch ] # Or your primary branch
 
 jobs:
   web-deploy:
