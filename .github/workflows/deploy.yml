@@ -1,0 +1,39 @@
+name: Deploy Astro.js to External Server
+
+on:
+  push:
+    branches:
+      - main  # Trigger deployment on push to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the repository
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Node.js
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18  # Use the Node.js version compatible with Astro.js
+
+    # Step 3: Install dependencies
+    - name: Install dependencies
+      run: npm install
+
+    # Step 4: Build the Astro.js project
+    - name: Build Astro.js project
+      run: npm run build
+
+    # Step 5: Deploy to the external server
+    - name: Deploy to server via SSH
+      env:
+        SERVER_HOST: ${{ secrets.FTP_HOST }}
+        SERVER_USER: ${{ secrets.FTP_USER }}
+        DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+      run: |
+        ssh $SERVER_USER@$SERVER_HOST "mkdir -p $DEPLOY_PATH"
+        rsync -avz --delete ./dist/ $SERVER_USER@$SERVER_HOST:$DEPLOY_PATH
