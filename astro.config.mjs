@@ -9,5 +9,5 @@ import alpine from '@astrojs/alpinejs';
 export default defineConfig({
   site: 'https://astro-cc.thewebdeveloper.com.au',
   integrations: [react(), tailwind(), bookshop(), alpine(), mdx()],
-  outDir: "./"
+  outDir: './',
 });
