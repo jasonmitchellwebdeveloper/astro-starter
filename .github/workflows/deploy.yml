@@ -29,11 +29,12 @@ jobs:
       run: npm run build
 
     # Step 5: Deploy to the external server
-    - name: Deploy to server via SSH
-      env:
-        SERVER_HOST: ${{ secrets.FTP_HOST }}
-        SERVER_USER: ${{ secrets.FTP_USER }}
-        DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
-      run: |
-        ssh $SERVER_USER@$SERVER_HOST "mkdir -p $DEPLOY_PATH"
-        rsync -avz --delete ./dist/ $SERVER_USER@$SERVER_HOST:$DEPLOY_PATH
+
+    - name: Deploy to FTP
+      uses: SamKirkland/web-deploy@v1
+      with:
+        target-server: astro-cc.thewebdeveloper.com.au
+        remote-user: dh_wxegfn
+        private-ssh-key: ${{ secrets.SSH_KEY }}
+        destination-path: /home/dh_wxegfn/astro-cc.thewebdeveloper.com.au
+        source-path: ./dist
