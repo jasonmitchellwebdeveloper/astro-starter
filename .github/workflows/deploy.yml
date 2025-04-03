@@ -37,4 +37,3 @@ jobs:
         remote-user: ${{ secrets.FTP_USER }}
         private-ssh-key: ${{ secrets.SSH_KEY }}
         destination-path: ${{ secrets.deploy_path }}
-        rsync-options: --dry-run
