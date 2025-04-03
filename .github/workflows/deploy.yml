@@ -33,7 +33,7 @@ jobs:
     - name: Deploy to FTP
       uses: SamKirkland/web-deploy@v1
       with:
-        target-server: https://astro-cc.thewebdeveloper.com.au
+        target-server: astro-cc.thewebdeveloper.com.au
         remote-user: ${{ secrets.FTP_USER }}
         private-ssh-key: ${{ secrets.SSH_KEY }}
         destination-path: ${{ secrets.deploy_path }}
