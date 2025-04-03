@@ -30,10 +30,13 @@ jobs:
 
     # Step 5: Deploy to the external server
 
-    - name: Deploy to FTP
-      uses: SamKirkland/web-deploy@v1
+    - name: SFTP Deploy
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.1
       with:
-        target-server: astro-cc.thewebdeveloper.com.au
-        remote-user: ${{ secrets.FTP_USER }}
-        private-ssh-key: ${{ secrets.SSH_KEY }}
-        destination-path: ${{ secrets.deploy_path }}
+        username: ${{ secrets.FTP_USER }}
+        server: astro-cc.thewebdeveloper.com.au
+        password: ${{ secrets.FTP_PASS }}
+        remote-path: /home/${{ secrets.FTP_USER}}/astro-cc.thewebdeveloper.com.au/
+        ssh_private_key: ${{ secrets.SSH_KEY }}
+        local-path: ./dist
+        port: 22
