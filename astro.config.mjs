@@ -4,9 +4,12 @@ import bookshop from "@bookshop/astro-bookshop";
 import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
 import alpine from "@astrojs/alpinejs";
+import awsAmplify from "astro-aws-amplify";
 
 // https://astro.build/config
 export default defineConfig({
   site: "astro-cc.thewebdeveloper.com.au",
   integrations: [react(), tailwind(), bookshop(), alpine(), mdx()],
+  adapter: awsAmplify(),
+  output: "server",
 });
