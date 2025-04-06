@@ -8,7 +8,6 @@ import awsAmplify from "astro-aws-amplify";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "main.d1wskm2jzur1zr.amplifyapp.com",
   integrations: [react(), tailwind(), bookshop(), alpine(), mdx()],
   adapter: awsAmplify(),
   output: "server",
